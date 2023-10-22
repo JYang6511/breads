@@ -2,14 +2,7 @@ const express = require('express')
 const breads = express.Router()
 const Bread = require('../models/bread.js')
 
-// // INDEX
-// breads.get('/', (req, res) => {
-//     res.render('Index',
-//       {
-//         breads: Bread
-//       }
-//     )
-// })
+
 
 breads.get('/', (req, res) => {
   Bread.find().then((foundBreads) => {
@@ -19,6 +12,17 @@ breads.get('/', (req, res) => {
     })
   })
 })
+
+breads.get('/:id', (req, res) => {
+  Bread.findById(req.params.id)
+      .then(foundBread => {
+          res.render('show', {
+              bread: foundBread
+          })
+      })
+})
+
+
 
 // NEW
 breads.get('/new', (req, res) => {
@@ -34,6 +38,7 @@ breads.get('/:indexArray/edit', (req, res) => {
 })
 
 
+
 // SHOW
 breads.get('/:arrayIndex', (req, res) => {
   if (Bread[req.params.arrayIndex]) {
@@ -45,6 +50,8 @@ breads.get('/:arrayIndex', (req, res) => {
     res.render('error404')
   }
 })
+
+
 
 // DELETE
 breads.delete('/:indexArray', (req, res) => {
@@ -78,7 +85,6 @@ breads.put('/:arrayIndex', (req, res) => {
   Bread[req.params.arrayIndex] = req.body
   res.redirect(`/breads/${req.params.arrayIndex}`)
 })
-
 
 
 
