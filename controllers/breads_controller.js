@@ -14,12 +14,11 @@ breads.get('/', (req, res) => {
 })
 
 
-breads.get('/data/seed', (req, res) => {
-  Bread.insertMany(seedData)
-    .then((createdBreads) => {
-      res.redirect('/breads')
-    })
+// NEW
+breads.get('/new', (req, res) => {
+  res.render('new')
 })
+
 
 
 breads.get('/:id', (req, res) => {
@@ -48,13 +47,14 @@ breads.post('/', (req, res) => {
 
 
 
-
-
-
-// NEW
-breads.get('/new', (req, res) => {
-  res.render('new')
+breads.get('/data/seed', (req, res) => {
+  Bread.insertMany(seedData)
+    .then((createdBreads) => {
+      res.redirect('/breads')
+    })
 })
+
+
 
 // // EDIT
 // breads.get('/:indexArray/edit', (req, res) => {

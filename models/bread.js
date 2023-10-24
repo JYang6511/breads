@@ -10,9 +10,10 @@ const breadSchema = new Schema({
   image: { type: String,  default: 'http://placehold.it/500x500.png'},
   baker: {
     type: String,
-    enum: ('Rachel', 'Monica', 'Joey', 'Chandler', 'Ross', 'Phoebe')
+    enum: ['Rachel', 'Monica', 'Joey', 'Chandler', 'Ross', 'Phoebe']
   }
 })
+
 
 
 
