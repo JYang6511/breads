@@ -48,8 +48,7 @@ breads.post('/', (req, res) => {
 
 
 breads.get('/data/seed', (req, res) => {
-  Bread.insertMany(seedData)
-    .then((createdBreads) => {
+  Bread.insertMany(seedData).then((createdBreads) => {
       res.redirect('/breads')
     })
 })
@@ -137,7 +136,6 @@ breads.get('/:arrayIndex', (req, res) => {
       })
   })
   
-
 
 
 
